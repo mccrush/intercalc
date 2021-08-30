@@ -20,7 +20,9 @@ const Counter = {
       errorPhone: '',
       errorEmail: '',
 
-      showBlock: false
+      showBlock: false,
+
+      message: null
     }
   },
   mounted() {
@@ -157,7 +159,7 @@ const Counter = {
       if (this.name && this.phone) {
         this.errorName = ''
         this.errorPhone = ''
-        const message = {
+        this.message = {
           name: this.name,
           phone: this.phone,
           email: this.email || 'не указан',
@@ -170,7 +172,7 @@ const Counter = {
           summa: this.aNum
         }
 
-        console.log('mes:', message);
+        console.log('mes:', this.message);
 
       } else if (!this.name && this.phone) {
         this.errorPhone = ''

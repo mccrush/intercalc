@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -216,7 +218,21 @@
               </div>
             </div>
           </div>
-
+          <div v-if="message" class="col-12">
+            <hr>
+            Будет отправленно на почту: <button class="btn btn-sm btn-secondary"
+              @click="message = null">Сбросить</button><br>
+            Имя: {{message.name}} <br>
+            Телефон: {{message.phone}} <br>
+            Email: {{message.email}} <br>
+            ОПФ: {{message.opf}} <br>
+            РНО: {{message.rno}} <br>
+            ВЭД: {{message.ved}} <br>
+            Количество сделок: {{message.countSdel}} <br>
+            Количество сотрудников: {{message.countSotrud}} <br>
+            Тариф: {{message.tarif}} <br>
+            Сумма: {{message.summa}} <br>
+          </div>
         </div>
       </div>
     </div>
