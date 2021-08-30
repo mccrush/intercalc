@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script> -->
+  <style>
+    .form-control:focus {
+      border-color: #ff711f;
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgb(255 113 31 / 25%);
+    }
+
+
+
+    .bg-warning {
+      background: #ff711f !important;
+    }
+
+    .btn-warning {
+      background: #ff711f;
+      border-color: #ff711f;
+      color: #fff;
+    }
+
+    .btn-warning:hover {
+      background: #ff711f;
+      border-color: #ff711f;
+      color: #fff;
+    }
+
+    .btn-warning:focus,
+    .btn-warning:active {
+      background: #ff711f;
+      border-color: #ff711f;
+      color: #fff;
+      box-shadow: 0 0 0 0.25rem rgb(255 113 31 / 50%);
+    }
+
+    .form-check-input:checked {
+      background-color: #ff711f;
+      border-color: #ff711f;
+    }
+
+    .form-check-input:focus {
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgb(255 113 31 / 25%);
+    }
+
+    .text-danger {
+      color: #ff711f !important;
+    }
+
+    .custom-range::-webkit-slider-thumb,
+    .custom-range:active::-webkit-slider-thumb {
+      background: #ff711f;
+    }
+
+    .custom-range::-moz-range-thumb,
+    .custom-range:active::-moz-range-thumb {
+      background: #ff711f;
+    }
+
+    .custom-range::-ms-thumb,
+    .custom-range:active::-ms-thumb {
+      background: #ff711f;
+    }
+
+    .custom-range:focus::-webkit-slider-thumb {
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgb(255 113 31 / 25%);
+    }
+
+    .custom-range:focus::-moz-range-thumb {
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgb(255 113 31 / 25%);
+    }
+
+    .custom-range:focus::-ms-thumb {
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgb(255 113 31 / 25%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-10 col-xxl-8 m-auto">
+        <div id="counter" class="row rounded mt-4">
+          <div class="col-12 col-md-6 col-lg-7 p-3 pe-md-0">
+            <div class="shadow rounded p-3 h-100">
+              <div class="mb-3">
+                <h5>Организационно-правовая форма</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="opf1" checked v-model="opf" value="IP">
+                  <label class="form-check-label" for="opf1">
+                    ИП
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="opf2" v-model="opf" value="OOO">
+                  <label class=" form-check-label" for="opf2">
+                    ООО
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <h5>Режим налогообложения</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="rno" id="rno1" v-model="rno" value="USN6">
+                  <label class="form-check-label" for="rno1">
+                    УСН 6% (доход) или Патент
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="rno" id="rno2" v-model="rno" value="USN15">
+                  <label class="form-check-label" for="rno2">
+                    УСН 15% (доход-расход), ЕСХН и другие
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="rno" id="rno3" v-model="rno" value="OSN">
+                  <label class="form-check-label" for="rno3">
+                    ОСН
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="checkVED">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Внешняя экономическая деятельность
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="kolichsdel" class="form-label m-0">
+                  <h5>Количество сделок: {{countSdel}}</h5>
+                </label>
+                <input type="range" class="form-range custom-range" min="0" max="110" step="5" id="kolichsdel"
+                  v-model="countSdel" aria-describedby="kolSdelHelp">
+                <div id="kolSdelHelp" class="d-flex justify-content-between small m-0">
+                  <div>0</div>
+                  <div>50&nbsp;&nbsp;</div>
+                  <div>110</div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="kolichsol" class="form-label">
+                  <h5>Количество сотрудников</h5>
+                </label>
+                <input type="number" class="form-control" id="kolichsol" placeholder="Введите количество" min="1"
+                  max="1000" step="1" v-model.number="countSotrud">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6  col-lg-5 p-3">
+            <div class="shadow rounded h-100">
+              <div class="bg-warning text-white rounded-top p-3">
+                <div class="d-flex justify-content-between">
+                  <h5>Тариф</h5>
+                  <h5 class="opacity-0" :class="{'opacity-100': showBlock}">{{tarifType}}</h5>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <h5>Стоимость</h5>
+                  <h5 class="opacity-0" :class="{'opacity-100': showBlock}"><span class="font-monospace">{{aNum}}</span>
+                    <span v-if="aNum !== 'индивидуально'"> ₽/в мес.</span>
+                  </h5>
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="text-center mb-4">
+                  <h4>Что входит в тариф?</h4>
+                  <p>Оставьте заявку и мы пришлем коммерческое предложение</p>
+                </div>
+
+                <div class="mb-2">
+                  <input type="text" class="form-control" :placeholder="placeName" aria-describedby="nameHelp"
+                    @focus="placeName = ''; errorName = ''" @blur="placeName = 'Имя *'" v-model.trim="name" required>
+                  <div id="nameHelp" class="form-text m-0"><span v-if="errorName" class="opacity-0 text-danger"
+                      :class="{'opacity-100': showBlock}">{{errorName}}</span><span>&nbsp;</span></div>
+                </div>
+
+                <div class="mb-2">
+                  <input type="phone" class="form-control" :placeholder="placePhone" aria-describedby="phoneHelp"
+                    @focus="placePhone = ''; errorPhone = ''" @blur="placePhone = '+7'" v-model.trim="phone" required>
+                  <div id="phoneHelp" class="form-text">
+                    <span v-if="errorPhone" class="opacity-0 text-danger"
+                      :class="{'opacity-100': showBlock}">{{errorPhone}}</span><span>&nbsp;</span>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <input type="email" class="form-control" :placeholder="placeEmail" aria-describedby="emailHelp"
+                    @focus="placeEmail = ''" @blur="placeEmail = 'ex@mail.ru'" v-model.trim="email">
+                  <div id="emailHelp" class="form-text">
+                    <span v-if="errorEmail" class="opacity-0 text-danger"
+                      :class="{'opacity-100': showBlock}">{{errorEmail}}</span><span>&nbsp;</span>
+                  </div>
+                </div>
+
+                <button class="btn btn-warning w-100" @click="sendMessage">Получить предложение</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
