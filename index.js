@@ -1,8 +1,8 @@
 const Counter = {
   data() {
     return {
-      opf: 'IP',
-      rno: 'USN6',
+      opf: 'IP' || localStorage.getItem('opf'),
+      rno: 'USN6' || localStorage.getItem('rno'),
 
       countSdel: 1,
       countSotrud: 0,
