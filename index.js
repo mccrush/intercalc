@@ -1,20 +1,20 @@
 const Counter = {
   data() {
     return {
-      opf: 'IP' || localStorage.getItem('cl-opf'),
-      rno: 'USN6' || localStorage.getItem('cl-rno'),
+      opf: localStorage.getItem('cl-opf') || 'IP',
+      rno: localStorage.getItem('cl-rno') || 'USN6',
 
 
-      checkVED: false || localStorage.getItem('cl-checkVED'),
-      countSdel: 1 || localStorage.getItem('cl-countSdel'),
+      checkVED: localStorage.getItem('cl-checkVED') || false,
+      countSdel: localStorage.getItem('cl-countSdel') || 1,
       countSotrud: 0,
 
 
       tweenedNumber: 0,
 
-      name: '' || localStorage.getItem('cl-name'),
-      phone: '' || localStorage.getItem('cl-phone'),
-      email: '' || localStorage.getItem('cl-email'),
+      name: localStorage.getItem('cl-name') || '',
+      phone: localStorage.getItem('cl-phone') || '',
+      email: localStorage.getItem('cl-email') || '',
       placeName: 'Имя *',
       placePhone: '+7',
       placeEmail: 'ex@mail.ru',
@@ -32,7 +32,7 @@ const Counter = {
       this.showBlock = true
     }, 500)
     setTimeout(() => {
-      this.countSotrud = this.countSotrud ? this.countSotrud : localStorage.getItem('cl-countSotrud')
+      this.countSotrud = localStorage.getItem('cl-countSotrud') ? localStorage.getItem('cl-countSotrud') : 1
     }, 1000)
   },
   computed: {
