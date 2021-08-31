@@ -1,18 +1,20 @@
 const Counter = {
   data() {
     return {
-      opf: 'IP' || localStorage.getItem('opf'),
-      rno: 'USN6' || localStorage.getItem('rno'),
+      opf: 'IP' || localStorage.getItem('cl-opf'),
+      rno: 'USN6' || localStorage.getItem('cl-rno'),
 
-      countSdel: 1,
+
+      checkVED: false || localStorage.getItem('cl-checkVED'),
+      countSdel: 1 || localStorage.getItem('cl-countSdel'),
       countSotrud: 0,
-      checkVED: false,
+
 
       tweenedNumber: 0,
 
-      name: '',
-      phone: '',
-      email: '',
+      name: '' || localStorage.getItem('cl-name'),
+      phone: '' || localStorage.getItem('cl-phone'),
+      email: '' || localStorage.getItem('cl-email'),
       placeName: 'Имя *',
       placePhone: '+7',
       placeEmail: 'ex@mail.ru',
@@ -30,7 +32,7 @@ const Counter = {
       this.showBlock = true
     }, 500)
     setTimeout(() => {
-      this.countSotrud = 1
+      this.countSotrud = this.countSotrud ? this.countSotrud : localStorage.getItem('cl-countSotrud')
     }, 1000)
   },
   computed: {
@@ -184,6 +186,30 @@ const Counter = {
         this.errorName = 'Поле обязательно для ввода'
         this.errorPhone = 'Введите верный номер телефона'
       }
+    },
+    saveOPF() {
+      localStorage.setItem('cl-opf', this.opf)
+    },
+    saveRNO() {
+      localStorage.setItem('cl-rno', this.rno)
+    },
+    saveVED() {
+      localStorage.setItem('cl-checkVED', this.checkVED)
+    },
+    saveSdel() {
+      localStorage.setItem('cl-countSdel', this.countSdel)
+    },
+    saveSotrud() {
+      localStorage.setItem('cl-countSotrud', this.countSotrud)
+    },
+    saveName() {
+      localStorage.setItem('cl-name', this.name)
+    },
+    savePhone() {
+      localStorage.setItem('cl-phone', this.phone)
+    },
+    saveEmail() {
+      localStorage.setItem('cl-email', this.email)
     }
   },
   watch: {

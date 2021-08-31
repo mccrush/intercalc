@@ -102,13 +102,13 @@
               <div class="mb-3">
                 <h5>Организационно-правовая форма</h5>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" id="opf1" checked v-model="opf" value="IP">
+                  <input class="form-check-input" type="radio" id="opf1" v-model="opf" value="IP" @change="saveOPF">
                   <label class="form-check-label" for="opf1">
                     ИП
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" id="opf2" v-model="opf" value="OOO">
+                  <input class="form-check-input" type="radio" id="opf2" v-model="opf" value="OOO" @change="saveOPF">
                   <label class=" form-check-label" for="opf2">
                     ООО
                   </label>
@@ -118,19 +118,22 @@
               <div class="mb-3">
                 <h5>Режим налогообложения</h5>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="rno" id="rno1" v-model="rno" value="USN6">
+                  <input class="form-check-input" type="radio" name="rno" id="rno1" v-model="rno" value="USN6"
+                    @change="saveRNO">
                   <label class="form-check-label" for="rno1">
                     УСН 6% (доход) или Патент
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="rno" id="rno2" v-model="rno" value="USN15">
+                  <input class="form-check-input" type="radio" name="rno" id="rno2" v-model="rno" value="USN15"
+                    @change="saveRNO">
                   <label class="form-check-label" for="rno2">
                     УСН 15% (доход-расход), ЕСХН и другие
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="rno" id="rno3" v-model="rno" value="OSN">
+                  <input class="form-check-input" type="radio" name="rno" id="rno3" v-model="rno" value="OSN"
+                    @change="saveRNO">
                   <label class="form-check-label" for="rno3">
                     ОСН
                   </label>
@@ -139,7 +142,8 @@
 
               <div class="mb-3">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="checkVED">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="checkVED"
+                    @change="saveVED">
                   <label class="form-check-label" for="flexCheckDefault">
                     Внешняя экономическая деятельность
                   </label>
@@ -151,7 +155,7 @@
                   <h5>Количество сделок: {{countSdel}}</h5>
                 </label>
                 <input type="range" class="form-range custom-range" min="0" max="110" step="5" id="kolichsdel"
-                  v-model="countSdel" aria-describedby="kolSdelHelp">
+                  v-model="countSdel" @change="saveSdel" aria-describedby="kolSdelHelp">
                 <div id="kolSdelHelp" class="d-flex justify-content-between small m-0">
                   <div>0</div>
                   <div>50&nbsp;&nbsp;</div>
@@ -164,7 +168,7 @@
                   <h5>Количество сотрудников</h5>
                 </label>
                 <input type="number" class="form-control" id="kolichsol" placeholder="Введите количество" min="1"
-                  max="1000" step="1" v-model.number="countSotrud">
+                  max="1000" step="1" v-model.number="countSotrud" @input="saveSotrud">
               </div>
             </div>
           </div>
@@ -191,14 +195,16 @@
 
                 <div class="mb-2">
                   <input type="text" class="form-control" :placeholder="placeName" aria-describedby="nameHelp"
-                    @focus="placeName = ''; errorName = ''" @blur="placeName = 'Имя *'" v-model.trim="name" required>
+                    @focus="placeName = ''; errorName = ''" @blur="placeName = 'Имя *'" v-model.trim="name" required
+                    @input="saveName">
                   <div id="nameHelp" class="form-text m-0"><span v-if="errorName" class="opacity-0 text-danger"
                       :class="{'opacity-100': showBlock}">{{errorName}}</span><span>&nbsp;</span></div>
                 </div>
 
                 <div class="mb-2">
-                  <input type="phone" class="form-control" :placeholder="placePhone" aria-describedby="phoneHelp"
-                    @focus="placePhone = ''; errorPhone = ''" @blur="placePhone = '+7'" v-model.trim="phone" required>
+                  <input type="tel" class="form-control" :placeholder="placePhone" aria-describedby="phoneHelp"
+                    @focus="placePhone = ''; errorPhone = ''" @blur="placePhone = '+7'" v-model.trim="phone" required
+                    @input="savePhone">
                   <div id="phoneHelp" class="form-text">
                     <span v-if="errorPhone" class="opacity-0 text-danger"
                       :class="{'opacity-100': showBlock}">{{errorPhone}}</span><span>&nbsp;</span>
@@ -207,7 +213,7 @@
 
                 <div class="mb-3">
                   <input type="email" class="form-control" :placeholder="placeEmail" aria-describedby="emailHelp"
-                    @focus="placeEmail = ''" @blur="placeEmail = 'ex@mail.ru'" v-model.trim="email">
+                    @focus="placeEmail = ''" @blur="placeEmail = 'ex@mail.ru'" v-model.trim="email" @input="saveEmail">
                   <div id="emailHelp" class="form-text">
                     <span v-if="errorEmail" class="opacity-0 text-danger"
                       :class="{'opacity-100': showBlock}">{{errorEmail}}</span><span>&nbsp;</span>
