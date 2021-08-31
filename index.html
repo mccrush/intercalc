@@ -152,14 +152,24 @@
 
               <div class="mb-3">
                 <label for="kolichsdel" class="form-label m-0">
-                  <h5>Количество сделок: {{countSdel}}</h5>
+                  <h5>Количество документов: {{countSdel}}</h5>
                 </label>
                 <input type="range" class="form-range custom-range" min="0" max="110" step="5" id="kolichsdel"
                   v-model="countSdel" @change="saveSdel" aria-describedby="kolSdelHelp">
                 <div id="kolSdelHelp" class="d-flex justify-content-between small m-0">
-                  <div>0</div>
-                  <div>50&nbsp;&nbsp;</div>
-                  <div>110</div>
+                  <div class="small">0</div>
+                  <div class="small">&nbsp;</div>
+                  <div class="small">10</div>
+                  <div class="small">&nbsp;20</div>
+                  <div class="small">&nbsp;30</div>
+                  <div class="small">&nbsp;40</div>
+                  <div class="small">&nbsp;50</div>
+                  <div class="small">&nbsp;60</div>
+                  <div class="small">&nbsp;&nbsp;70</div>
+                  <div class="small">&nbsp;80</div>
+                  <div class="small">&nbsp;90</div>
+                  <div class="small">100</div>
+                  <div class="small">110</div>
                 </div>
               </div>
 

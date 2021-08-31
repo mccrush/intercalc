@@ -34,6 +34,12 @@ const Counter = {
     setTimeout(() => {
       this.countSotrud = localStorage.getItem('cl-countSotrud') ? localStorage.getItem('cl-countSotrud') : 1
     }, 1000)
+
+    // let thums = document.getElementsByClassName('custom-range::-webkit-slider-thumb')
+
+    // thums[0].addEventListener('mouseover', function () {
+    //   console.log('Hover thum');
+    // })
   },
   computed: {
     tarifType() {
