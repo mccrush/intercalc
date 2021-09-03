@@ -90,6 +90,12 @@ const Counter = {
         } else {
           if (this.countSdel > 100) {
             return 999
+          } else if (this.countSdel > 50) {
+            return 20700
+          } else if (this.countSdel > 20) {
+            return 15400
+          } else if (this.countSdel > 10) {
+            return 7200
           } else {
             return 0
           }
@@ -144,7 +150,7 @@ const Counter = {
     },
     totalSumm() {
       if (this.priceSdel !== 999) {
-        if (this.checkVED) {
+        if (typeof this.checkVED === 'string' && this.checkVED === 'true' || this.checkVED) {
           return this.basePrice + this.priceSotrud + this.priceRNO + this.priceSdel + (this.basePrice + this.priceSotrud + this.priceRNO + this.priceSdel) * .25
         } else {
           return this.basePrice + this.priceSotrud + this.priceRNO + this.priceSdel
