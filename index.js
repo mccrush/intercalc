@@ -5,7 +5,7 @@ const Counter = {
       rno: localStorage.getItem('cl-rno') || 'USN6',
 
 
-      checkVED: localStorage.getItem('cl-checkVED') || false,
+      checkVED: this.getCheckVED(),
       countSdel: localStorage.getItem('cl-countSdel') || 1,
       countSotrud: 0,
 
@@ -57,9 +57,6 @@ const Counter = {
     },
     basePrice() {
       return this.opf === 'IP' ? 2700 : 6000
-    },
-    priceVED() {
-
     },
     priceSdel() {
       if (this.opf === 'IP') {
@@ -150,7 +147,7 @@ const Counter = {
     },
     totalSumm() {
       if (this.priceSdel !== 999) {
-        if (typeof this.checkVED === 'string' && this.checkVED === 'true' || this.checkVED) {
+        if (this.checkVED) {
           return this.basePrice + this.priceSotrud + this.priceRNO + this.priceSdel + (this.basePrice + this.priceSotrud + this.priceRNO + this.priceSdel) * .25
         } else {
           return this.basePrice + this.priceSotrud + this.priceRNO + this.priceSdel
@@ -197,6 +194,14 @@ const Counter = {
       } else {
         this.errorName = 'Поле обязательно для ввода'
         this.errorPhone = 'Введите верный номер телефона'
+      }
+    },
+    getCheckVED() {
+      const checkStat = localStorage.getItem('cl-checkVED') || false
+      if (checkStat === 'true') {
+        return true
+      } else {
+        return false
       }
     },
     saveOPF() {
